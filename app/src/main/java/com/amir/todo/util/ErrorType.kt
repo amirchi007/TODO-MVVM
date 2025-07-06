@@ -1,0 +1,1 @@
+package com.amir.todo.utilsealed class ErrorType {    data class Network(val code: Int,val message: String) : ErrorType()    object UnKnownError : ErrorType()}

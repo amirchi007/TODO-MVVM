@@ -1,1 +1,0 @@
-package com.amir.todo.domaindata class Reminder(    val timeBefore: Long,    val isEnabled: Boolean)

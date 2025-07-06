@@ -1,1 +1,0 @@
-package com.amir.todo.domaindata class SubTask(    val taskId: Int,    val isDone: Boolean,    val title: String,)

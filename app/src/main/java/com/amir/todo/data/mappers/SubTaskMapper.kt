@@ -1,1 +1,1 @@
-package com.amir.todo.data.mappersimport com.amir.todo.data.model.SubTaskEntityimport com.amir.todo.domain.SubTaskfun SubTaskEntity.toDomain(): SubTask {    return SubTask(        title = title,        isDone = isDone,        taskId = taskId,    )}
+package com.amir.todo.data.mappersimport com.amir.todo.data.model.SubTaskEntityimport com.amir.todo.domain.model.SubTaskfun SubTaskEntity.toDomain(): SubTask {    return SubTask(        title = title,        isDone = isDone,        taskId = taskId,    )}

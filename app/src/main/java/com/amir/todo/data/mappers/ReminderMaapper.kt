@@ -1,1 +1,1 @@
-package com.amir.todo.data.mappersimport com.amir.todo.data.model.ReminderEntityimport com.amir.todo.domain.Reminderfun ReminderEntity.toDomain():Reminder {    return Reminder(        timeBefore = timeBefore,        isEnabled = isEnabled    )}
+package com.amir.todo.data.mappersimport com.amir.todo.data.model.ReminderEntityimport com.amir.todo.domain.model.Reminderfun ReminderEntity.toDomain():Reminder {    return Reminder(        timeBefore = timeBefore,        isEnabled = isEnabled    )}
