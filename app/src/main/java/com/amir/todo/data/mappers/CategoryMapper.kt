@@ -1,0 +1,1 @@
+package com.amir.todo.data.mappersimport androidx.compose.ui.graphics.Colorimport com.amir.todo.data.model.CategoryEntityimport com.amir.todo.domain.Categoryimport androidx.core.graphics.toColorIntfun CategoryEntity.toDomain(): Category {    return Category(        id = id,        title = title,        color = Color(color.toColorInt())    )}

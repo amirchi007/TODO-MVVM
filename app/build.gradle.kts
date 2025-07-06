@@ -56,4 +56,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.sqldelight.runtime)
+//    implementation(libs.sqldelight.android.driver)
+
+//    implementation("app.cash.sqldelight:android-driver:2.1.0")
 }
