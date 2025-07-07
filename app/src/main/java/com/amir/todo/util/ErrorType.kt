@@ -1,1 +1,1 @@
-package com.amir.todo.utilsealed class ErrorType {    data class Network(val code: Int,val message: String) : ErrorType()    object UnKnownError : ErrorType()}
+package com.amir.todo.utilsealed class ErrorType {    data class DataBase(val message: String) : ErrorType()    data class Unknown(val message: String) : ErrorType()    override fun toString(): String {        return when (this) {            is DataBase -> "DataBase Error  $message"            is Unknown -> "Unknown Error: $message"        }    }}

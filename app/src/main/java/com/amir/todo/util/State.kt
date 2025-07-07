@@ -1,0 +1,1 @@
+package com.amir.todo.utilsealed class State<out T> {    data class Success<out T>(val data: T) : State<T>()    data class Error(val error: ErrorType) : State<Nothing>()    data class Loading<out T>(val data: T? = null) : State<T>()}
