@@ -1,0 +1,5 @@
+CREATE TABLE categoryEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    color TEXT NOT NULL
+);

@@ -1,0 +1,7 @@
+import kotlinx.serialization.descriptors.PrimitiveKind.BOOLEAN;
+
+CREATE TABLE reminderEntity (
+    taskId INTEGER NOT NULL REFERENCES taskEntity(id),
+    timeBefore INTEGER NOT NULL,
+    isEnabled INTEGER AS BOOLEAN NOT NULL
+);

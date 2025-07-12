@@ -1,0 +1,11 @@
+import kotlinx.serialization.descriptors.PrimitiveKind.BOOLEAN;
+
+CREATE TABLE taskEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    isDone INTEGER AS BOOLEAN NOT NULL,
+    date TEXT NOT NULL,
+    description TEXT NOT NULL,
+    important INTEGER AS BOOLEAN NOT NULL,
+    categoryId INTEGER NOT NULL REFERENCES categoryEntity(id)
+);

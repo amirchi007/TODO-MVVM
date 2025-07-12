@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.sqldelight)
 }
 
 android {
@@ -58,7 +59,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.sqldelight.runtime)
-//    implementation(libs.sqldelight.android.driver)
-
-//    implementation("app.cash.sqldelight:android-driver:2.1.0")
+    implementation(libs.sqldelight.android.driver)
 }
+
+sqldelight {
+    databases {
+        create("TodoDatabase") {
+            packageName.set("com.amir.todo")
+        }
+    }
+}
+
