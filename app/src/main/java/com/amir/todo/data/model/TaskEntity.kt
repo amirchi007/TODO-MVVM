@@ -1,1 +1,0 @@
-package com.amir.todo.data.modeldata class TaskEntity(    val id: Int,    val isDone: Boolean,    val title: String,    val date: String,    val remainder: ReminderEntity,    val description: String,    val subTask: List<SubTaskEntity>,    val category: CategoryEntity,    val important: Boolean)

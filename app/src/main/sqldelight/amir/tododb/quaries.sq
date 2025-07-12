@@ -1,0 +1,61 @@
+-- Delete
+deleteTask:
+DELETE FROM taskEntity WHERE id = ?;
+
+-- Insert
+insertTask:
+INSERT INTO taskEntity (title, date, description, categoryId, important)
+VALUES (?, ?, ?, ?, ?);
+
+-- Get All
+getAllTasks:
+SELECT * FROM taskEntity;
+
+-- Get By Id
+getTaskById:
+SELECT taskEntity.*, categoryEntity.*, reminderEntity.*, subTaskEntity.*
+FROM taskEntity
+LEFT JOIN categoryEntity ON categoryEntity.id = taskEntity.categoryId
+LEFT JOIN reminderEntity ON reminderEntity.taskId = taskEntity.id
+LEFT JOIN subTaskEntity ON subTaskEntity.taskId = taskEntity.id
+WHERE taskEntity.id = ?;
+
+-- Update isDone
+updateTask:
+UPDATE taskEntity SET isDone = ? WHERE id = ?;
+
+-- Edit task (title, date, etc.)
+editTask:
+UPDATE taskEntity
+SET title = ?, date = ?, description = ?, categoryId = ?, important = ?
+WHERE id = ?;
+
+
+getTaskWithRelationsById:
+SELECT
+    taskEntity.id,
+    taskEntity.title,
+    taskEntity.isDone,
+    taskEntity.date,
+    taskEntity.description,
+    taskEntity.important,
+    taskEntity.categoryId,
+
+    categoryEntity.id AS category_id,
+    categoryEntity.title AS category_title,
+    categoryEntity.color AS category_color,
+
+    reminderEntity.taskId AS reminder_taskId,
+    reminderEntity.timeBefore,
+    reminderEntity.isEnabled,
+
+    subTaskEntity.id AS sub_id,
+    subTaskEntity.title AS sub_title,
+    subTaskEntity.taskId AS sub_taskId,
+    subTaskEntity.isDone AS sub_done
+
+FROM taskEntity
+LEFT JOIN categoryEntity ON taskEntity.categoryId = categoryEntity.id
+LEFT JOIN reminderEntity ON taskEntity.id = reminderEntity.taskId
+LEFT JOIN subTaskEntity ON taskEntity.id = subTaskEntity.taskId
+WHERE taskEntity.id = ?;

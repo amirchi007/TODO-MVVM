@@ -60,12 +60,14 @@ dependencies {
 
     implementation(libs.sqldelight.runtime)
     implementation(libs.sqldelight.android.driver)
+    implementation(libs.coroutines.extensions)
 }
 
 sqldelight {
     databases {
         create("TodoDatabase") {
             packageName.set("com.amir.todo")
+            generateAsync.set(true)
         }
     }
 }

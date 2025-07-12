@@ -1,1 +1,1 @@
-package com.amir.todo.domain.modeldata class Reminder(    val timeBefore: Long,    val isEnabled: Boolean)
+package com.amir.todo.domain.modeldata class Reminder(    val timeBefore: Long,    val isEnabled: Boolean) {    companion object {        fun default() = Reminder(            timeBefore = 0L,            isEnabled = false        )    }}
