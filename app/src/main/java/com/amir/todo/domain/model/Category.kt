@@ -1,1 +1,1 @@
-package com.amir.todo.domain.modelimport androidx.compose.ui.graphics.Colordata class Category(    val id: Int,    val title: String,    val color: Color)
+package com.amir.todo.domain.modelimport androidx.compose.ui.graphics.Colordata class Category(    val id: Int,    val title: String,    val color: Color,)

@@ -9,16 +9,40 @@ VALUES (?, ?, ?, ?, ?);
 
 -- Get All
 getAllTasks:
-SELECT * FROM taskEntity;
+SELECT taskEntity.id, taskEntity.title, taskEntity.isDone, taskEntity.date, taskEntity.description, taskEntity.important,
+       categoryEntity.id AS category_id, categoryEntity.title AS category_title, categoryEntity.color AS category_color
+FROM taskEntity
+JOIN categoryEntity ON taskEntity.categoryId = categoryEntity.id;
 
 -- Get By Id
 getTaskById:
-SELECT taskEntity.*, categoryEntity.*, reminderEntity.*, subTaskEntity.*
+SELECT
+  taskEntity.id AS task_id,
+  taskEntity.title AS task_title,
+  taskEntity.isDone AS task_is_done,
+  taskEntity.date AS task_date,
+  taskEntity.description AS task_description,
+  taskEntity.important AS task_important,
+  taskEntity.categoryId AS task_category_id,
+
+  categoryEntity.id AS category_id,
+  categoryEntity.title AS category_title,
+  categoryEntity.color AS category_color,
+
+  reminderEntity.taskId AS reminder_task_id,
+  reminderEntity.timeBefore AS reminder_time_before,
+  reminderEntity.isEnabled AS reminder_is_enabled,
+
+  subTaskEntity.id AS subtask_id,
+  subTaskEntity.title AS subtask_title,
+  subTaskEntity.isDone AS subtask_is_done
+
 FROM taskEntity
 LEFT JOIN categoryEntity ON categoryEntity.id = taskEntity.categoryId
 LEFT JOIN reminderEntity ON reminderEntity.taskId = taskEntity.id
 LEFT JOIN subTaskEntity ON subTaskEntity.taskId = taskEntity.id
 WHERE taskEntity.id = ?;
+
 
 -- Update isDone
 updateTask:
@@ -30,32 +54,6 @@ UPDATE taskEntity
 SET title = ?, date = ?, description = ?, categoryId = ?, important = ?
 WHERE id = ?;
 
+getSubTasksByTaskId:
+SELECT * FROM subTaskEntity WHERE taskId = ?;
 
-getTaskWithRelationsById:
-SELECT
-    taskEntity.id,
-    taskEntity.title,
-    taskEntity.isDone,
-    taskEntity.date,
-    taskEntity.description,
-    taskEntity.important,
-    taskEntity.categoryId,
-
-    categoryEntity.id AS category_id,
-    categoryEntity.title AS category_title,
-    categoryEntity.color AS category_color,
-
-    reminderEntity.taskId AS reminder_taskId,
-    reminderEntity.timeBefore,
-    reminderEntity.isEnabled,
-
-    subTaskEntity.id AS sub_id,
-    subTaskEntity.title AS sub_title,
-    subTaskEntity.taskId AS sub_taskId,
-    subTaskEntity.isDone AS sub_done
-
-FROM taskEntity
-LEFT JOIN categoryEntity ON taskEntity.categoryId = categoryEntity.id
-LEFT JOIN reminderEntity ON taskEntity.id = reminderEntity.taskId
-LEFT JOIN subTaskEntity ON taskEntity.id = subTaskEntity.taskId
-WHERE taskEntity.id = ?;
