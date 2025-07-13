@@ -61,6 +61,11 @@ dependencies {
     implementation(libs.sqldelight.runtime)
     implementation(libs.sqldelight.android.driver)
     implementation(libs.coroutines.extensions)
+
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.navigation)
+    implementation(libs.koin.androidx.compose)
+    testImplementation(libs.koin.test.junit4)
 }
 
 sqldelight {
